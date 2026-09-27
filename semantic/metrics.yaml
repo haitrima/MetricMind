@@ -1,0 +1,28 @@
+metrics:
+  total_sales:
+     description: "Total sales revenue"
+     column: "Sales"
+     aggregation: "sum"
+
+  total_profit:
+    description: "Total profit"
+    column: "Profit"
+    aggregation: "sum"
+
+  profit_margin:
+    description: "Profit margin percentage"
+    formula: "(Total Profit / Total Sales) * 100"
+
+  dimensions:
+     region:
+      column: "Region"
+      description: "Sales region"
+
+  product:
+    column: "Product"
+    description: "Product Catagory"
+
+  date:
+     column: "Date"
+     description: "Transaction date"
+     
