@@ -18,11 +18,12 @@ metrics:
       column: "Region"
       description: "Sales region"
 
-  product:
-    column: "Product"
-    description: "Product Catagory"
+     product:
+      column: "Product"
+      description: "Product Category"
 
-  date:
-     column: "Date"
-     description: "Transaction date"
+     date:
+      column: "Date"
+      description: "Transaction date"
+
      
