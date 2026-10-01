@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
+def plot_sales_by_region(df, region=None):
+    if region is not None:
+        df = df[df["Region"] == region]
 
-def plot_sales_by_region(df):
     sales = df.groupby("Region")["Sales"].sum()
 
     sales.plot(kind="bar")
