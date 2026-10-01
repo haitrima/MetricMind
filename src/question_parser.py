@@ -3,6 +3,7 @@ def parse_question(question):
 
     metric = None
     region = None
+    product = None
 
     if "sales" in question:
         metric = "total_sales"
@@ -19,6 +20,13 @@ def parse_question(question):
             region = "Asia"
     elif "north america" in question:
             region = "North America"
+
+    if "laptop" in question or "laptops" in question:
+                  product = "Laptop"
+    elif "phone" in question or "phones" in question:
+                  product = "Phone"
+    elif "monitor" in question or "monitors" in question:
+                  product = "Monitor"          
     
 
-    return {"metric": metric, "region": region}
+    return {"metric": metric, "region": region, "product": product}
