@@ -2,7 +2,7 @@ from src.metrics import load_data
 from src.query_engine import find_metric, find_dimension
 
 
-def run_metric(metric_name, region=None):
+def run_metric(metric_name, region=None, product=None):
     df = load_data()
     metric = find_metric(metric_name)
 
@@ -13,6 +13,12 @@ def run_metric(metric_name, region=None):
         dimension = find_dimension("region")
         column = dimension["column"]
         df = df[df[column] == region]
+
+    if product is not None:
+        dimension = find_dimension("product")
+        column = dimension["column"]
+        df = df[df[column] == product]
+
 
     if "formula" in metric:
         total_profit_value = df["Profit"].sum()
