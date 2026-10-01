@@ -5,9 +5,9 @@ def parse_question(question):
     region = None
     product = None
 
-    if "sales" in question:
+    if "sales" in question or "revenue" in question:
         metric = "total_sales"
-    elif "profit margin" in question:
+    elif "profit margin" in question or "margin" in question:
         metric = "profit_margin"
     elif "profit" in question:
         metric = "total_profit"
