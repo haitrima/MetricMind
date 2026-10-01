@@ -1,5 +1,9 @@
 from src.question_parser import parse_question
 from src.metric_runner import run_metric
+from src.explanation_engine import explain_answer
+
+
+
 
 def answer_question(question):
     parsed = parse_question(question)
@@ -23,7 +27,4 @@ def answer_question(question):
     else:
         metric_name = metric
 
-    if region is not None:
-            return f"{metric_name} in {region}: {result}"
-    
-    else: return f"{metric_name}: {result}"
+        return explain_answer(metric, result, region) 
