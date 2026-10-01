@@ -1,6 +1,8 @@
 from src.question_parser import parse_question
 from src.metric_runner import run_metric
 from src.explanation_engine import explain_answer
+from src.visualizer import plot_sales_by_region
+from src.metrics import load_data
 
 def answer_question(question):
     parsed = parse_question(question)
@@ -24,5 +26,8 @@ def answer_question(question):
         metric_name = "Profit Margin"
     else:
         metric_name = metric
+
+    if metric == "total_sales":
+        plot_sales_by_region(load_data(), region)    
 
     return explain_answer(metric, result, region) 
