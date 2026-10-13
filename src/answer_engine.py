@@ -30,4 +30,4 @@ def answer_question(question):
     if metric == "total_sales":
         plot_sales_by_region(load_data(), region)    
 
-    return explain_answer(metric, result, region) 
+    return explain_answer(metric, result, region, product) 

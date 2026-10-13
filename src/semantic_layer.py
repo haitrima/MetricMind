@@ -10,4 +10,4 @@ def get_metric(metric_name):
 
 def get_dimension(dimension_name):
     semantic_layer = load_semantic_layer()
-    return semantic_layer["metrics"]["dimensions"].get(dimension_name)
+    return semantic_layer["dimensions"].get(dimension_name)

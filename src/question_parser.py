@@ -5,28 +5,32 @@ def parse_question(question):
     region = None
     product = None
 
-    if "sales" in question or "revenue" in question:
-        metric = "total_sales"
-    elif "profit margin" in question or "margin" in question:
+    # Identify the requested metric
+    if "profit margin" in question or "margin" in question:
         metric = "profit_margin"
     elif "profit" in question:
         metric = "total_profit"
+    elif "sales" in question or "revenue" in question:
+        metric = "total_sales"
 
-    
-
+    # Identify the region
     if "europe" in question:
-            region = "Europe"
+        region = "Europe"
     elif "asia" in question:
-            region = "Asia"
+        region = "Asia"
     elif "north america" in question:
-            region = "North America"
+        region = "North America"
 
-    if "laptop" in question or "laptops" in question:
-                  product = "Laptop"
-    elif "phone" in question or "phones" in question:
-                  product = "Phone"
-    elif "monitor" in question or "monitors" in question:
-                  product = "Monitor"          
-    
+    # Identify the product
+    if "laptop" in question:
+        product = "Laptop"
+    elif "phone" in question:
+        product = "Phone"
+    elif "monitor" in question:
+        product = "Monitor"
 
-    return {"metric": metric, "region": region, "product": product}
+    return {
+        "metric": metric,
+        "region": region,
+        "product": product,
+    }

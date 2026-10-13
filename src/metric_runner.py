@@ -4,6 +4,7 @@ from src.query_engine import find_metric, find_dimension
 
 def run_metric(metric_name, region=None, product=None):
     df = load_data()
+
     metric = find_metric(metric_name)
 
     if metric is None:
@@ -11,14 +12,20 @@ def run_metric(metric_name, region=None, product=None):
 
     if region is not None:
         dimension = find_dimension("region")
+        if dimension is None:
+            return None
         column = dimension["column"]
-        df = df[df[column] == region]
+        df = df[df[column].astype(str).str.strip().str.lower() == region.strip().lower()]
 
     if product is not None:
         dimension = find_dimension("product")
+        if dimension is None:
+            return None
         column = dimension["column"]
-        df = df[df[column] == product]
+        df = df[df[column].astype(str).str.strip().str.lower() == product.strip().lower()]
 
+    if df.empty:
+        return 0
 
     if "formula" in metric:
         total_profit_value = df["Profit"].sum()
